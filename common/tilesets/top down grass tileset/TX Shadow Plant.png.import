@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://y8buw0hbi53o"
-path="res://.godot/imported/TX Shadow Plant.png-519c6b22b40f8606e066010166784c01.ctex"
+path="res://.godot/imported/TX Shadow Plant.png-2a04bd606dff7b2e652b7b9a05621401.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/top down grass tileset/TX Shadow Plant.png"
-dest_files=["res://.godot/imported/TX Shadow Plant.png-519c6b22b40f8606e066010166784c01.ctex"]
+source_file="res://common/tilesets/top down grass tileset/TX Shadow Plant.png"
+dest_files=["res://.godot/imported/TX Shadow Plant.png-2a04bd606dff7b2e652b7b9a05621401.ctex"]
 
 [params]
 
