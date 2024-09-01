@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 # Called every frame.
 func _process(delta):
-	var velocity = Vector2.ZERO # Player movement vector.
+	velocity = Vector2.ZERO # Player movement vector.
 	
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
