@@ -12,3 +12,4 @@
 script = ExtResource("3_fbsme")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
