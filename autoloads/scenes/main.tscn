@@ -6,10 +6,19 @@
 
 [node name="Main" type="Node"]
 
-[node name="TileMap" parent="." instance=ExtResource("1_qviu6")]
+[node name="Test Level" parent="." instance=ExtResource("1_qviu6")]
 
 [node name="Player" parent="." instance=ExtResource("2_5i3be")]
 script = ExtResource("3_fbsme")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="Health Bar" type="ProgressBar" parent="Player"]
+offset_left = -276.0
+offset_top = -152.0
+offset_right = -173.0
+offset_bottom = -125.0
+size_flags_vertical = 4
+max_value = 4.0
+step = 1.0
