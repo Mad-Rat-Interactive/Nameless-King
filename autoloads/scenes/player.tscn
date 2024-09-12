@@ -114,16 +114,18 @@ states/move_left/position = Vector2(346, -71)
 states/move_right/node = SubResource("AnimationNodeAnimation_jrw8f")
 states/move_right/position = Vector2(699, -71)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_tdfm1"), "idle", "move_right", SubResource("AnimationNodeStateMachineTransition_3668p"), "move_right", "idle", SubResource("AnimationNodeStateMachineTransition_lbt57"), "idle", "move_left", SubResource("AnimationNodeStateMachineTransition_545tm"), "move_left", "idle", SubResource("AnimationNodeStateMachineTransition_mn5gd"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_hw4vn")]
-graph_offset = Vector2(-73, -117)
+graph_offset = Vector2(-87, -114)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_kyptg")
 hframes = 6
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1.5, 4.5)
 shape = SubResource("RectangleShape2D_ewa6i")
 
