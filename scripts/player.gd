@@ -6,6 +6,7 @@ extends CharacterBody2D
 func _physics_process(delta):
 	velocity = Vector2.ZERO # Player movement vector.
 	
+	
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("down"):
@@ -19,3 +20,4 @@ func _physics_process(delta):
 		velocity = velocity.normalized() * speed
 		
 	position += velocity * delta
+
