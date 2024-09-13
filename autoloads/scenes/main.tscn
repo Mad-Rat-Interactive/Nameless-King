@@ -25,13 +25,13 @@ script = SubResource("GDScript_gh7dl")
 [node name="Player" parent="." instance=ExtResource("2_5i3be")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="Health Bar" type="ProgressBar" parent="Player"]
-offset_left = -229.0
-offset_top = -116.0
-offset_right = -155.0
-offset_bottom = -89.0
+offset_left = -258.0
+offset_top = -136.0
+offset_right = -184.0
+offset_bottom = -109.0
 size_flags_vertical = 4
 max_value = 4.0
 step = 1.0
