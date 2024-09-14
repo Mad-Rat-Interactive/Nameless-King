@@ -2,10 +2,21 @@ extends CharacterBody2D
 
 @export var speed = 200
 
+#Animation variables
 var long_idle = false
 @export var idle_twirl_threshold = 4.2
+
 @onready var animation_tree: AnimationTree = $Animation/AnimationTree
 @onready var idle_timer: Timer = Timer.new()
+
+#Combat variables
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+var health = 10
+var player_alive = true
+
+var attack_ip = false #Attack In progress
+
 
 # Activate the animation tree when the scene is ready
 func _ready():
@@ -38,12 +49,23 @@ func _physics_process(delta):
 
 	# Update the blend position of the animation based on movement
 	update_animation_parameter(velocity)
+	
+	#Combat
+	attack()
+	enemy_attack()
+	
+	if health <= 0 :
+		player_alive = false #Add Game over/death screen
+		health = 0
+		print("The nameless king has fallen")
+		
 
 # Called every frame, handles other updates
 func _process(_delta):
-	pass
+	pass #Here, but not in use atm
 
-# Update animation parameters based on the player's movement velocity
+
+# Update animation parameters based on the player's movement velocity + attack animation
 func update_animation_parameter(movement: Vector2):
 	# Set the conditions in the AnimationTree
 	if movement == Vector2.ZERO:
@@ -64,13 +86,50 @@ func update_animation_parameter(movement: Vector2):
 		animation_tree["parameters/Idle/blend_position"] = Vector2(1, 0)
 	else:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(-1, 0)
-		
+
 	# Update the blend position based on the movement velocity
 	if movement != Vector2.ZERO:
 		animation_tree["parameters/Walk/blend_position"] = movement.normalized()
-	
+
 
 # Called when the idle timer reaches zero
 func _on_idle_timer_timeout():
 	long_idle = true
 	
+
+
+# Combat related functions
+func player():
+	pass
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+func attack():
+	var dir = null #Fix when doing attack animations
+	
+	if Input.is_action_just_pressed("basic_attack"):
+		Global.player_current_attack = true
+		attack_ip = true
+		$deal_attack_timer.start()
+		
+
+func enemy_attack():
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		health = health - 2
+		enemy_attack_cooldown = false
+		$take_damage_cooldown.start()
+		print("Nameless king health: ", health) #Turn this into healthbars, print was just for debugging
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
+
+func _on_deal_attack_timer_timeout(): #When attack ends
+	$deal_attack_timer.stop()
+	Global.player_current_attack = false
+	attack_ip = false

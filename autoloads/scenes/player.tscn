@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cf2thel27u0br"]
+[gd_scene load_steps=34 format=3 uid="uid://cf2thel27u0br"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hx5ka"]
 [ext_resource type="Texture2D" uid="uid://rvr2iam4tumq" path="res://player/sprites/movement.png" id="1_kyptg"]
@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bmfcjfswjspdj" path="res://player/sprites/Long idle.png" id="6_kx18m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3uqy"]
-radius = 8.0
-height = 34.5
+radius = 11.0
+height = 38.0
 
 [sub_resource type="Animation" id="Animation_mh7nj"]
 length = 0.001
@@ -441,9 +441,25 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 10, 9, 10, 9, 8, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_jma14"]
+resource_name = "attack_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sqidg"]
 _data = {
 "RESET": SubResource("Animation_mh7nj"),
+"attack_right": SubResource("Animation_jma14"),
 "idle": SubResource("Animation_tlx0q"),
 "idle_long": SubResource("Animation_2u2ho"),
 "move_down": SubResource("Animation_h0ny6"),
@@ -524,7 +540,7 @@ states/Start/position = Vector2(114, 227)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_vqp8r")
 states/Walk/position = Vector2(496, 227)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_dfg6n"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_8gdmx"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xu2rr")]
-graph_offset = Vector2(-132, 142.369)
+graph_offset = Vector2(-248, 41.369)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_hx5ka")
@@ -535,10 +551,21 @@ texture = ExtResource("1_w2784")
 hframes = 2
 frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 6.75)
+[node name="Collision box" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
 shape = SubResource("CapsuleShape2D_x3uqy")
+
+[node name="Player Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Hitbox"]
+position = Vector2(-1, 7)
+shape = SubResource("CapsuleShape2D_x3uqy")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="deal_attack_timer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="Animation" type="Node2D" parent="."]
 
@@ -557,3 +584,8 @@ parameters/conditions/is_moving = false
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Idle/4/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]

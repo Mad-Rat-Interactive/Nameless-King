@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlexwhk5oynbb"]
+[gd_scene load_steps=5 format=3 uid="uid://dlexwhk5oynbb"]
 
 [ext_resource type="PackedScene" uid="uid://c5cghjvbrnlb4" path="res://autoloads/scenes/test_map.tscn" id="1_qviu6"]
 [ext_resource type="PackedScene" uid="uid://cf2thel27u0br" path="res://autoloads/scenes/player.tscn" id="2_5i3be"]
+[ext_resource type="PackedScene" uid="uid://lx4spx5dt5bd" path="res://autoloads/scenes/enemy.tscn" id="3_jwm1u"]
 
 [sub_resource type="GDScript" id="GDScript_gh7dl"]
 script/source = "extends Node2D
@@ -33,5 +34,8 @@ offset_top = -136.0
 offset_right = -184.0
 offset_bottom = -109.0
 size_flags_vertical = 4
-max_value = 4.0
+max_value = 10.0
 step = 1.0
+
+[node name="Enemy 1" parent="." instance=ExtResource("3_jwm1u")]
+position = Vector2(291, -13)
