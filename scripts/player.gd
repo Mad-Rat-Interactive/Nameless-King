@@ -12,10 +12,12 @@ var long_idle = false
 #Combat variables
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
-var health = 10
-var player_alive = true
 
-var attack_ip = false #Attack In progress
+var attack_ip = false #Player attack In progress
+
+var health = 10
+signal health_changed(new_value)
+var player_alive = true
 
 
 # Activate the animation tree when the scene is ready
@@ -86,6 +88,12 @@ func update_animation_parameter(movement: Vector2):
 		animation_tree["parameters/Idle/blend_position"] = Vector2(1, 0)
 	else:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(-1, 0)
+	
+	#Attack animation
+	if Input.is_action_just_pressed("basic_attack"):
+		animation_tree["parameters/conditions/attack"] = true
+	else:
+		animation_tree["parameters/conditions/attack"] = false
 
 	# Update the blend position based on the movement velocity
 	if movement != Vector2.ZERO:
@@ -99,7 +107,7 @@ func _on_idle_timer_timeout():
 
 
 # Combat related functions
-func player():
+func player(): #Need this for entity detection via method
 	pass
 
 func _on_player_hitbox_body_entered(body):
@@ -111,8 +119,6 @@ func _on_player_hitbox_body_exited(body):
 		enemy_inattack_range = false
 
 func attack():
-	var dir = null #Fix when doing attack animations
-	
 	if Input.is_action_just_pressed("basic_attack"):
 		Global.player_current_attack = true
 		attack_ip = true
@@ -122,9 +128,9 @@ func attack():
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
 		health = health - 2
+		health_changed.emit(health)
 		enemy_attack_cooldown = false
 		$take_damage_cooldown.start()
-		print("Nameless king health: ", health) #Turn this into healthbars, print was just for debugging
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
