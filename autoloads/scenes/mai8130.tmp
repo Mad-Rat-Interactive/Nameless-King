@@ -46,14 +46,10 @@ theme_override_styles/background = SubResource("StyleBoxFlat_0kbi7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c8u7a")
 max_value = 10.0
 step = 1.0
-value = 10.0
 show_percentage = false
 script = ExtResource("3_uhonl")
 
 [node name="Enemy 1" parent="." instance=ExtResource("3_jwm1u")]
 position = Vector2(291, -13)
-
-[node name="Enemy 2" parent="." instance=ExtResource("3_jwm1u")]
-position = Vector2(-289, -13)
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]
