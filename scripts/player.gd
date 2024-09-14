@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 200
+@export var speed = 1.5
 
 # Animation variables
 var long_idle = false
@@ -52,10 +52,7 @@ func _physics_process(delta):
 
 	# Normalize the velocity and scale it by speed if the player is moving
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-
-	# Update the position
-	position += velocity * delta
+		move_and_collide(velocity.normalized() * speed)
 
 	# Update the blend position of the animation based on movement
 	update_animation_parameter(velocity)
