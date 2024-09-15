@@ -18,6 +18,10 @@ var health = 10
 signal health_changed(new_value)
 var player_alive = true
 
+#Realmtek
+var realm_cooldown : float = 0.00
+var realm_active : bool = false
+
 # Sprite for hurt effect
 @onready var sprite: Sprite2D = $Sprite2D # Assuming the sprite is named 'Sprite2D'
 @onready var hurt_timer: Timer = Timer.new()
@@ -64,7 +68,19 @@ func _physics_process(delta):
 	if health <= 0:
 		player_alive = false # Add Game over/death screen
 		health = 0
-		print("The nameless king has fallen")
+		
+	
+	# Realmtek
+	if realm_cooldown > 0:
+		realm_cooldown -= delta
+	if Input.is_action_pressed("lantern") and realm_cooldown <= 0:
+		if realm_active:
+			position.x -= 6786
+			realm_active = false
+		else:
+			position.x += 6786
+			realm_active = true
+		realm_cooldown = 1.00
 
 # Called every frame, handles other updates
 func _process(_delta):
@@ -119,6 +135,7 @@ func _on_player_hit():
 # Reset the sprite color after the hurt effect
 func _on_hurt_timer_timeout():
 	sprite.modulate = Color(1, 1, 1) # Reset to default color
+
 
 # Combat related functions
 func player(): # Need this for entity detection via method
