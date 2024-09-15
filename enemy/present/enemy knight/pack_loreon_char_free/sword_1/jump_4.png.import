@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1j8wfqafmgdy"
-path="res://.godot/imported/Necromancer_creativekind-Sheet.png-09d5d35fd74c5cebe0038d65200f4dda.ctex"
+uid="uid://brs3lj5c8h8o6"
+path="res://.godot/imported/jump_4.png-428d8a0d613042d998d2523b1a8e2789.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/present/Necromancer_creativekind-Sheet.png"
-dest_files=["res://.godot/imported/Necromancer_creativekind-Sheet.png-09d5d35fd74c5cebe0038d65200f4dda.ctex"]
+source_file="res://enemy/present/enemy knight/pack_loreon_char_free/sword_1/jump_4.png"
+dest_files=["res://.godot/imported/jump_4.png-428d8a0d613042d998d2523b1a8e2789.ctex"]
 
 [params]
 
