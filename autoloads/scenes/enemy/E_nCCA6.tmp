@@ -280,7 +280,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q0f4s")
 }],
-"loop": false,
+"loop": true,
 "name": &"damage",
 "speed": 8.0
 }, {
@@ -315,7 +315,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4mwms")
 }],
-"loop": false,
+"loop": true,
 "name": &"death",
 "speed": 20.0
 }, {
@@ -366,12 +366,16 @@ bg_color = Color(0.975664, 4.57242e-06, 1.54018e-06, 1)
 [node name="ENecromancer" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_xncm0")
+speed = null
+health = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_5hh6h")
-animation = &"chase"
+animation = &"attack_end"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="attackHitbox" type="Area2D" parent="."]
 

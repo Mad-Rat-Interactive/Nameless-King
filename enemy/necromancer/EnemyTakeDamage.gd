@@ -3,18 +3,15 @@ extends State
 @onready var enemy := $"../.."
 @export var move_speed := 0.0
 
-var move_direction: Vector2
-
 func Enter():
 	enemy.velocity = Vector2.ZERO
-	$"../../AnimatedSprite2D".play("attack_warm_up")
+	$"../../AnimatedSprite2D".play("damage")
 
 func Physics_Update(_delta: float):
 	enemy.velocity = Vector2.ZERO
-	if enemy.is_taking_damage:
-		Transitioned.emit(self, "EnemyTakeDamage")
 	if not $"../../AnimatedSprite2D".is_playing():
-		Transitioned.emit(self, "EnemyAttackFinish")
+		enemy.is_taking_damage = false
+		Transitioned.emit(self, "EnemyIdle")
 
-
-
+	if enemy.health <= 0:
+		Transitioned.emit(self, "EnemyDeath")

@@ -7,6 +7,9 @@ func Enter():
 	$"../../AnimatedSprite2D".play("chase")
 
 func Physics_Update(_delta: float):
+	if enemy.is_taking_damage:
+		Transitioned.emit(self, "EnemyTakeDamage")
+
 	if not enemy.player:
 		enemy.player = null
 		Transitioned.emit(self, "EnemyIdle")
@@ -21,6 +24,6 @@ func Physics_Update(_delta: float):
 	else:
 		enemy.velocity = Vector2()
 
-	if direction.length() > 200:
+	if direction.length() > 150:
 		enemy.player = null
 		Transitioned.emit(self, "EnemyIdle")

@@ -21,6 +21,8 @@ func Update(_delta):
 		randomise_wander()
 
 func Physics_Update(_delta: float):
+	if enemy.is_taking_damage:
+		Transitioned.emit(self, "EnemyTakeDamage")
 	if enemy.can_attack:
 		Transitioned.emit(self, "EnemyAttackCharge")
 	if enemy:

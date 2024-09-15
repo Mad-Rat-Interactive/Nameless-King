@@ -1,8 +1,9 @@
-extends CharacterBody2D
+extends Enemy
 class_name Necromancer
 
 @export var speed = 40
 @export var health = 16
+@onready var healthbar: ProgressBar = $Healthbar
 
 var player_chase = false
 var player = null
@@ -11,8 +12,13 @@ var player_inattack_zone = false
 var can_take_damage = true
 
 var can_attack = false
+var is_taking_damage = false
+
+signal healthChange
 
 func _ready() -> void:
+	healthChange.connect(new_health)
+	healthChange.emit(health)
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -23,17 +29,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.flip_h = true
 
-func take_damage():
-	if !player_inattack_zone or !Global.player_current_attack:
-		return
+# Functions
 
-	if can_take_damage:
-		health -= 4
-		$take_damage_cooldown.start()
-		can_take_damage = false
+func new_health(health: int):
+	healthbar.value = health
 
-	if health <= 0:
-		self.queue_free()
+func take_damage(damage):
+	if not is_taking_damage:
+		is_taking_damage = true
+		health -= damage
+		healthChange.emit(health)
+
+# Signals
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true

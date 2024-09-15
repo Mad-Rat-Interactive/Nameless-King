@@ -9,6 +9,7 @@ var long_idle = false
 
 @onready var animation_tree: AnimationTree = $Animation/AnimationTree
 @onready var idle_timer: Timer = Timer.new()
+@onready var sword: Area2D = $sword
 
 # Combat variables
 var enemy_inattack_range = false
@@ -47,12 +48,16 @@ func _physics_process(delta):
 
 	# Input checks for movement directions
 	if Input.is_action_pressed("up"):
+		sword.rotation_degrees = 270
 		velocity.y -= 1
 	if Input.is_action_pressed("down"):
+		sword.rotation_degrees = 90
 		velocity.y += 1
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1
+		sword.rotation_degrees = 180
 	if Input.is_action_pressed("right"):
+		sword.rotation_degrees = 0
 		velocity.x += 1
 
 	# Normalize the velocity and scale it by speed if the player is moving
@@ -172,3 +177,8 @@ func _on_deal_attack_timer_timeout(): # When attack ends
 	$deal_attack_timer.stop()
 	Global.player_current_attack = false
 	attack_ip = false
+
+
+func _on_sword_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.take_damage(4)

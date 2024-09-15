@@ -55,7 +55,7 @@ show_percentage = false
 script = ExtResource("3_uhonl")
 
 [node name="Enemy 1" parent="." instance=ExtResource("3_jwm1u")]
-position = Vector2(291, -13)
+position = Vector2(338, -28)
 
 [node name="Enemy 2" parent="." instance=ExtResource("3_jwm1u")]
 position = Vector2(-289, -13)
@@ -67,6 +67,6 @@ color = Color(0.521413, 0.34948, 0.494242, 1)
 position = Vector2(55, -46)
 
 [node name="ENecromancer2" parent="." instance=ExtResource("5_lyomv")]
-position = Vector2(148, 78)
+position = Vector2(160, 124)
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]
