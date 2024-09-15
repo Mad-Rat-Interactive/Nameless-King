@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4218q0uyc5l7"]
+[gd_scene load_steps=15 format=3 uid="uid://b4218q0uyc5l7"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vki72"]
-[ext_resource type="Texture2D" uid="uid://dp5pgfiv6114k" path="res://enemy/present/enemy knight/pack_loreon_char_free/sword_1/ready_2.png" id="2_u1wfc"]
+[ext_resource type="Texture2D" uid="uid://cge37dp4tvhot" path="res://enemy/present/enemy knight/pack_loreon_char_free/sword_1/idle.png" id="2_pgebb"]
 [ext_resource type="Script" path="res://scripts/enemyhealth.gd" id="3_cdjfv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n84pa"]
@@ -21,13 +21,65 @@ bg_color = Color(0.545098, 0.545098, 0.545098, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi86d"]
 bg_color = Color(0.975664, 4.57242e-06, 1.54018e-06, 1)
 
+[sub_resource type="Animation" id="Animation_cu0u3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_joht7"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgdk2"]
+_data = {
+"RESET": SubResource("Animation_cu0u3"),
+"idle": SubResource("Animation_joht7")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mx7gc"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3uvsb"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3ydme"]
+states/idle/node = SubResource("AnimationNodeAnimation_mx7gc")
+states/idle/position = Vector2(397, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3uvsb")]
+graph_offset = Vector2(-137, -18)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_vki72")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
 scale = Vector2(0.993229, 0.993229)
-texture = ExtResource("2_u1wfc")
+texture = ExtResource("2_pgebb")
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -59,6 +111,15 @@ step = 1.0
 show_percentage = false
 script = ExtResource("3_cdjfv")
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dgdk2")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_3ydme")
+anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="health_changed" from="." to="ProgressBar" method="_on_character_body_2d_health_changed"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
