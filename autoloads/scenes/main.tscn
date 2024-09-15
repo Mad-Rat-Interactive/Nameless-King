@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5cghjvbrnlb4" path="res://autoloads/scenes/test_map.tscn" id="1_qviu6"]
 [ext_resource type="PackedScene" uid="uid://cf2thel27u0br" path="res://autoloads/scenes/player.tscn" id="2_5i3be"]
-[ext_resource type="PackedScene" uid="uid://cdt8tgfumtnsr" path="res://autoloads/scenes/enemy.tscn" id="3_jwm1u"]
+[ext_resource type="PackedScene" path="res://autoloads/scenes/enemy.tscn" id="3_jwm1u"]
 [ext_resource type="Script" path="res://scripts/Health Bar.gd" id="3_uhonl"]
 
 [sub_resource type="GDScript" id="GDScript_gh7dl"]
