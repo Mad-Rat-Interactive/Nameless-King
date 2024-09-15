@@ -129,6 +129,7 @@ func _on_idle_timer_timeout():
 
 # Hurt effect for when player is hit
 func _on_player_hit():
+	SoundManager.play_sound("Hurt")
 	sprite.modulate = Color(1, 0, 0) # Change sprite color to red
 	hurt_timer.start()
 
@@ -151,6 +152,7 @@ func _on_player_hitbox_body_exited(body):
 
 func attack():
 	if Input.is_action_just_pressed("basic_attack"):
+		SoundManager.play_sound("Swing")
 		long_idle = false
 		Global.player_current_attack = true
 		attack_ip = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvcfocmfbvts0"
+path="res://.godot/imported/[No Copyright Music] The Last Soul - (Royalty Free Epic Music).mp3-dd2c468086b03da6bd62691708e921b5.mp3str"
+
+[deps]
+
+source_file="res://autoloads/scenes/[No Copyright Music] The Last Soul - (Royalty Free Epic Music).mp3"
+dest_files=["res://.godot/imported/[No Copyright Music] The Last Soul - (Royalty Free Epic Music).mp3-dd2c468086b03da6bd62691708e921b5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
