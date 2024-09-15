@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://lx4spx5dt5bd"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_4ypoi"]
-[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/past/Necromancer_creativekind-Sheet.png" id="2_hi0vv"]
+[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/present/Necromancer_creativekind-Sheet.png" id="2_hi0vv"]
 [ext_resource type="Script" path="res://scripts/enemyhealth.gd" id="3_d6xi6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n84pa"]
