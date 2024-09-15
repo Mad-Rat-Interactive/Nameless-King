@@ -16,4 +16,3 @@ func _physics_process(delta):
 			show()
 		
 		cooldown = 1.00
-

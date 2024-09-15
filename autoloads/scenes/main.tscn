@@ -5,6 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://lx4spx5dt5bd" path="res://autoloads/scenes/enemy.tscn" id="3_jwm1u"]
 [ext_resource type="Script" path="res://scripts/Health Bar.gd" id="3_uhonl"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kbi7"]
+bg_color = Color(0.450648, 0.450648, 0.450648, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8u7a"]
+bg_color = Color(0.904713, 0, 0.0488151, 1)
+
 [sub_resource type="GDScript" id="GDScript_gh7dl"]
 script/source = "extends Node2D
 
@@ -19,23 +25,16 @@ func _process(_delta):
 	pass
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kbi7"]
-bg_color = Color(0.450648, 0.450648, 0.450648, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8u7a"]
-bg_color = Color(0.904713, 0, 0.0488151, 1)
-
 [node name="Main" type="Node"]
 
-[node name="map_root" parent="." instance=ExtResource("1_qviu6")]
-script = SubResource("GDScript_gh7dl")
-
 [node name="Player" parent="." instance=ExtResource("2_5i3be")]
+y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 
 [node name="Health Bar" type="ProgressBar" parent="Player"]
+z_index = 1
 offset_left = -258.0
 offset_top = -136.0
 offset_right = -109.0
@@ -55,5 +54,8 @@ position = Vector2(291, -13)
 
 [node name="Enemy 2" parent="." instance=ExtResource("3_jwm1u")]
 position = Vector2(-289, -13)
+
+[node name="map_root" parent="." instance=ExtResource("1_qviu6")]
+script = SubResource("GDScript_gh7dl")
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]
