@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lx4spx5dt5bd"]
+[gd_scene load_steps=8 format=3 uid="uid://cdt8tgfumtnsr"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_4ypoi"]
 [ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/present/Necromancer_creativekind-Sheet.png" id="1_801jo"]
