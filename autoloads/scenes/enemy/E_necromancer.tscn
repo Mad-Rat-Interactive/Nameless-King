@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://1255ah2k5xcx"]
+
+[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/past/Necromancer_creativekind-Sheet.png" id="1_oo5v1"]
+[ext_resource type="Script" path="res://enemy/necromancer/E_necromancer.gd.gd" id="1_sflfa"]
+[ext_resource type="Script" path="res://scripts/classes/statemachine.gd" id="2_64ciu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn53g"]
+size = Vector2(14, 30)
+
+[node name="ENecromancer" type="CharacterBody2D"]
+script = ExtResource("1_sflfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.400002)
+shape = SubResource("RectangleShape2D_hn53g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -14.6)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_oo5v1")
+hframes = 17
+vframes = 7
+frame = 1
+
+[node name="EnemyStateMachine" type="Node2D" parent="."]
+script = ExtResource("2_64ciu")
+
+[node name="EnemyIdle" type="Node2D" parent="EnemyStateMachine"]
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

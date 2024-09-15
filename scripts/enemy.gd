@@ -56,7 +56,7 @@ func take_damage():
 			health_changed.emit(health)
 			$take_damage_cooldown.start()
 			can_take_damage = false
-			
+
 			# If health is depleted, remove the enemy
 			if health <= 0:
 				self.queue_free()
