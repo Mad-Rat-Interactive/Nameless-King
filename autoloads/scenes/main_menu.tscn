@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbiiptqsabb8v"]
+[gd_scene load_steps=8 format=3 uid="uid://dbiiptqsabb8v"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_858d6"]
+[ext_resource type="Texture2D" uid="uid://b576hn5jyrlhd" path="res://autoloads/scenes/TitleScreen/1.png" id="2_ci63e"]
+[ext_resource type="Texture2D" uid="uid://b68kvesgh2w0a" path="res://autoloads/scenes/TitleScreen/2.png" id="3_a6qxr"]
+[ext_resource type="Texture2D" uid="uid://c1akoa4452dea" path="res://autoloads/scenes/TitleScreen/3.png" id="4_ohjk0"]
+[ext_resource type="Texture2D" uid="uid://tfocu6hm8k20" path="res://Mad Rat 2.png" id="5_73e27"]
+[ext_resource type="FontFile" uid="uid://c72yckh877fel" path="res://Mantinia.otf" id="5_winf5"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_413gd"]
+frames = 15
+frame_0/texture = ExtResource("2_ci63e")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_ci63e")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("2_ci63e")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("3_a6qxr")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("3_a6qxr")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("3_a6qxr")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("3_a6qxr")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("4_ohjk0")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("4_ohjk0")
+frame_8/duration = 0.1
+frame_9/texture = ExtResource("4_ohjk0")
+frame_9/duration = 0.1
+frame_10/texture = ExtResource("3_a6qxr")
+frame_10/duration = 0.1
+frame_11/texture = ExtResource("2_ci63e")
+frame_11/duration = 0.1
+frame_12/texture = ExtResource("2_ci63e")
+frame_12/duration = 0.1
+frame_13/texture = ExtResource("2_ci63e")
+frame_13/duration = 0.1
+frame_14/texture = ExtResource("2_ci63e")
+frame_14/duration = 0.1
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -11,10 +49,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_858d6")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.2)
+texture = SubResource("AnimatedTexture_413gd")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 53.0
+offset_right = 35.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -30,6 +94,34 @@ text = "Options"
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.5
+offset_top = -175.5
+offset_right = 302.5
+offset_bottom = -54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_winf5")
+theme_override_font_sizes/font_size = 76
+text = "Nameless King"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_73e27")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
