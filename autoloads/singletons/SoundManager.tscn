@@ -11,7 +11,7 @@ script = ExtResource("1_6fypk")
 [node name="Main" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_gdu0m")
 volume_db = -10.0
-max_distance = 10000.0
+max_distance = 100000.0
 
 [node name="Swing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_74onw")
