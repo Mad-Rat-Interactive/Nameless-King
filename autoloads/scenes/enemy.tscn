@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://lx4spx5dt5bd"]
+[gd_scene load_steps=9 format=3 uid="uid://lx4spx5dt5bd"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_4ypoi"]
 [ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/present/Necromancer_creativekind-Sheet.png" id="1_801jo"]
 [ext_resource type="Script" path="res://scripts/enemyhealth.gd" id="3_d6xi6"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n84pa"]
+radius = 12.0
+height = 36.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2aond"]
-radius = 13.0
+radius = 31.0
+height = 66.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7gtvp"]
 radius = 72.0069
@@ -26,16 +31,18 @@ hframes = 17
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 12)
-shape = SubResource("CapsuleShape2D_2aond")
+position = Vector2(1, 14)
+shape = SubResource("CapsuleShape2D_n84pa")
 
 [node name="Enemy Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 position = Vector2(1, 12)
 shape = SubResource("CapsuleShape2D_2aond")
 
 [node name="Detection Area" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area"]
 position = Vector2(0, 12)
