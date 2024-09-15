@@ -6,12 +6,10 @@ class_name Necromancer
 @onready var healthbar: ProgressBar = $Healthbar
 
 var player_chase = false
-var player = null
+var player: Player = null
 
-var player_inattack_zone = false
-var can_take_damage = true
-
-var can_attack = false
+var can_attack_player = false
+var can_damage_player = false
 var is_taking_damage = false
 
 signal healthChange
@@ -42,17 +40,22 @@ func take_damage(damage):
 
 # Signals
 
-func _on_take_damage_cooldown_timeout():
-	can_take_damage = true
-
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player = body
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		can_attack = true
+		can_attack_player = true
 
 func _on_attack_hitbox_body_exited(body: Node2D) -> void:
 	if body is Player:
-		can_attack = false
+		can_attack_player = false
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		can_damage_player = true
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		can_damage_player = false

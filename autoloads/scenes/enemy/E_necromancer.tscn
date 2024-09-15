@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://1255ah2k5xcx"]
+[gd_scene load_steps=62 format=3 uid="uid://1255ah2k5xcx"]
 
 [ext_resource type="Script" path="res://enemy/necromancer/E_necromancer.gd" id="1_xncm0"]
 [ext_resource type="Script" path="res://scripts/classes/statemachine.gd" id="2_64ciu"]
@@ -353,7 +353,7 @@ animations = [{
 radius = 23.75
 height = 55.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k84rv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_exnny"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdhkm"]
 bg_color = Color(0.545098, 0.545098, 0.545098, 0)
@@ -361,7 +361,11 @@ bg_color = Color(0.545098, 0.545098, 0.545098, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_peylx"]
 bg_color = Color(0.975664, 4.57242e-06, 1.54018e-06, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmnnl"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0orlc"]
+height = 42.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fk2"]
+size = Vector2(70, 70)
 
 [node name="ENecromancer" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -382,7 +386,7 @@ shape = SubResource("CapsuleShape2D_boaph")
 scale = Vector2(14, 14)
 
 [node name="DetectionArea" type="CollisionShape2D" parent="playerDetection"]
-shape = SubResource("CircleShape2D_k84rv")
+shape = SubResource("CircleShape2D_exnny")
 
 [node name="EnemyStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_64ciu")
@@ -407,9 +411,6 @@ script = ExtResource("9_jwx1b")
 [node name="EnemyDeath" type="Node2D" parent="EnemyStateMachine"]
 script = ExtResource("10_xiyy0")
 
-[node name="take_damage_cooldown" type="Timer" parent="."]
-wait_time = 0.4
-
 [node name="Healthbar" type="ProgressBar" parent="."]
 offset_left = -10.0
 offset_top = 29.0
@@ -423,10 +424,20 @@ show_percentage = false
 script = ExtResource("4_jihrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cmnnl")
+position = Vector2(0, 1.25)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_0orlc")
 debug_color = Color(0.945868, 5.87195e-06, 0.590462, 0.42)
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="attackShape" type="CollisionShape2D" parent="AttackArea"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_v6fk2")
+debug_color = Color(0.163386, 0.000316075, 0.2996, 0.42)
 
 [connection signal="body_entered" from="attackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_exited" from="attackHitbox" to="." method="_on_attack_hitbox_body_exited"]
 [connection signal="body_entered" from="playerDetection" to="." method="_on_player_detection_body_entered"]
-[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

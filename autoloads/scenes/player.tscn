@@ -76,7 +76,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_nd17h"]
@@ -866,6 +866,7 @@ position = Vector2(1, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Hitbox"]
 position = Vector2(-1, 7)
 shape = SubResource("CapsuleShape2D_x3uqy")
+disabled = true
 
 [node name="take_damage_cooldown" type="Timer" parent="."]
 wait_time = 0.5
@@ -916,6 +917,7 @@ position = Vector2(0, 7)
 [node name="attackArea" type="CollisionShape2D" parent="sword"]
 position = Vector2(11, 0)
 shape = SubResource("RectangleShape2D_ebqgm")
+disabled = true
 
 [connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]

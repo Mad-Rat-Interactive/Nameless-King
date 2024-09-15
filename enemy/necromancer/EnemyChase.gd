@@ -14,7 +14,7 @@ func Physics_Update(_delta: float):
 		enemy.player = null
 		Transitioned.emit(self, "EnemyIdle")
 
-	if enemy.can_attack:
+	if enemy.can_attack_player:
 		Transitioned.emit(self, "EnemyAttackCharge")
 
 	var direction : Vector2 = enemy.player.global_position - enemy.global_position

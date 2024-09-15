@@ -23,7 +23,7 @@ func Update(_delta):
 func Physics_Update(_delta: float):
 	if enemy.is_taking_damage:
 		Transitioned.emit(self, "EnemyTakeDamage")
-	if enemy.can_attack:
+	if enemy.can_attack_player:
 		Transitioned.emit(self, "EnemyAttackCharge")
 	if enemy:
 		enemy.velocity = move_direction * move_speed

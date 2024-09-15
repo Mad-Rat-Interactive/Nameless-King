@@ -69,7 +69,7 @@ func _physics_process(delta):
 
 	# Combat
 	attack()
-	enemy_attack()
+	#enemy_attack()
 
 	if health <= 0:
 		player_alive = false # Add Game over/death screen
@@ -163,12 +163,12 @@ func attack():
 		$deal_attack_timer.start()
 
 func enemy_attack():
-	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health -= 2
-		health_changed.emit(health)
-		_on_player_hit() # Trigger the hurt effect when attacked
-		enemy_attack_cooldown = false
-		$take_damage_cooldown.start()
+	#if enemy_inattack_range and enemy_attack_cooldown == true:
+	health -= 2
+	health_changed.emit(health)
+	_on_player_hit() # Trigger the hurt effect when attacked
+	enemy_attack_cooldown = false
+	$take_damage_cooldown.start()
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
