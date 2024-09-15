@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdt8tgfumtnsr"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_4ypoi"]
+[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/present/Necromancer_creativekind-Sheet.png" id="1_801jo"]
+[ext_resource type="Script" path="res://scripts/enemyhealth.gd" id="3_d6xi6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2aond"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gtvp"]
+radius = 72.0069
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3saft"]
+bg_color = Color(0.545098, 0.545098, 0.545098, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi86d"]
+bg_color = Color(0.975664, 4.57242e-06, 1.54018e-06, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4ypoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_801jo")
+hframes = 17
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 12)
+shape = SubResource("CapsuleShape2D_2aond")
+
+[node name="Enemy Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hitbox"]
+position = Vector2(1, 12)
+shape = SubResource("CapsuleShape2D_2aond")
+
+[node name="Detection Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area"]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_7gtvp")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -26.0
+offset_top = -16.0
+offset_right = 27.0
+offset_bottom = -12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3saft")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bi86d")
+max_value = 16.0
+step = 1.0
+show_percentage = false
+script = ExtResource("3_d6xi6")
+
+[connection signal="health_changed" from="." to="ProgressBar" method="_on_character_body_2d_health_changed"]
+[connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_exited"]
+[connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

@@ -33,7 +33,7 @@ func _ready():
 	idle_timer.wait_time = idle_twirl_threshold
 	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
 	add_child(idle_timer)
-	
+
 	# Hurt timer setup
 	hurt_timer.one_shot = true
 	hurt_timer.wait_time = 0.2 # Time for the hurt effect (in seconds)
@@ -60,16 +60,16 @@ func _physics_process(delta):
 
 	# Update the blend position of the animation based on movement
 	update_animation_parameter(velocity)
-	
+
 	# Combat
 	attack()
 	enemy_attack()
-	
+
 	if health <= 0:
 		player_alive = false # Add Game over/death screen
 		health = 0
-		
-	
+
+
 	# Realmtek
 	if realm_cooldown > 0:
 		realm_cooldown -= delta
@@ -92,7 +92,7 @@ func update_animation_parameter(movement: Vector2):
 	if movement == Vector2.ZERO:
 		animation_tree["parameters/conditions/Idle"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
-		
+
 		# Start the idle timer only if it is stopped
 		if idle_timer.is_stopped() and !long_idle:
 			idle_timer.start()
@@ -101,13 +101,13 @@ func update_animation_parameter(movement: Vector2):
 		animation_tree["parameters/conditions/is_moving"] = true
 		long_idle = false
 		idle_timer.stop() # Stop the timer when moving
-	
+
 	# Set the blend position based on whether in long idle state
 	if long_idle:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(1, 0)
 	else:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(-1, 0)
-	
+
 	# Attack animation
 	if Input.is_action_just_pressed("basic_attack"):
 		animation_tree["parameters/conditions/attack"] = true
