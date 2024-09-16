@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://nac7b77geu66"]
+[gd_scene load_steps=4 format=3 uid="uid://nac7b77geu66"]
 
-[ext_resource type="VideoStream" path="res://autoloads/scenes/deathscreen.ogv" id="1_82m6n"]
+[ext_resource type="VideoStream" path="res://autoloads/scenes/DeathScreen/deathscreen.ogv" id="1_82m6n"]
 [ext_resource type="Script" path="res://scripts/deathscreen.gd" id="2_0nyl7"]
+[ext_resource type="Texture2D" uid="uid://xlqwfc88h3dp" path="res://autoloads/scenes/DeathScreen/Solid_black.png" id="3_orpnm"]
 
 [node name="Node" type="Node"]
+
+[node name="black_backround" type="Sprite2D" parent="."]
+position = Vector2(811.25, 408.25)
+scale = Vector2(8.0975, 4.0675)
+texture = ExtResource("3_orpnm")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
-stretch_mode = 3
+stretch_mode = 1
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
 layout_mode = 2
