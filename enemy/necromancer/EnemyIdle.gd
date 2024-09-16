@@ -12,6 +12,7 @@ func randomise_wander():
 
 func Enter():
 	$"../../AnimatedSprite2D".play("idle")
+	enemy.velocity = Vector2.ZERO
 	randomise_wander()
 
 func Update(_delta):

@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c5cghjvbrnlb4" path="res://autoloads/scenes/test_map.tscn" id="1_qviu6"]
 [ext_resource type="PackedScene" uid="uid://cf2thel27u0br" path="res://autoloads/scenes/player.tscn" id="2_5i3be"]
-[ext_resource type="PackedScene" uid="uid://cdt8tgfumtnsr" path="res://autoloads/scenes/enemy.tscn" id="3_jwm1u"]
 [ext_resource type="Script" path="res://scripts/Health Bar.gd" id="3_uhonl"]
 [ext_resource type="PackedScene" uid="uid://1255ah2k5xcx" path="res://autoloads/scenes/enemy/E_necromancer.tscn" id="5_lyomv"]
+[ext_resource type="PackedScene" uid="uid://c5oekf7y663gs" path="res://autoloads/scenes/enemy/E_knights.tscn" id="5_m5666"]
 
 [sub_resource type="GDScript" id="GDScript_gh7dl"]
 script/source = "extends Node2D
@@ -54,19 +54,34 @@ value = 10.0
 show_percentage = false
 script = ExtResource("3_uhonl")
 
-[node name="Enemy 1" parent="." instance=ExtResource("3_jwm1u")]
-position = Vector2(338, -28)
-
-[node name="Enemy 2" parent="." instance=ExtResource("3_jwm1u")]
-position = Vector2(-289, -13)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.521413, 0.34948, 0.494242, 1)
 
 [node name="ENecromancer" parent="." instance=ExtResource("5_lyomv")]
-position = Vector2(55, -46)
+position = Vector2(391, -207)
 
 [node name="ENecromancer2" parent="." instance=ExtResource("5_lyomv")]
-position = Vector2(160, 124)
+position = Vector2(469, -123)
+
+[node name="ENecromancer3" parent="." instance=ExtResource("5_lyomv")]
+position = Vector2(-414, 25)
+
+[node name="ENecromancer4" parent="." instance=ExtResource("5_lyomv")]
+position = Vector2(-12, 311)
+
+[node name="ENecromancer5" parent="." instance=ExtResource("5_lyomv")]
+position = Vector2(1351, -13)
+
+[node name="ENecromancer6" parent="." instance=ExtResource("5_lyomv")]
+position = Vector2(1429, 71)
+
+[node name="ENecromancer7" parent="." instance=ExtResource("5_lyomv")]
+position = Vector2(546, 219)
+
+[node name="ENecromancer8" parent="." instance=ExtResource("5_lyomv")]
+position = Vector2(948, 505)
+
+[node name="EKnights" parent="." instance=ExtResource("5_m5666")]
+position = Vector2(156, -74)
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]

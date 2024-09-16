@@ -1,9 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://1255ah2k5xcx"]
+[gd_scene load_steps=61 format=3 uid="uid://1255ah2k5xcx"]
 
 [ext_resource type="Script" path="res://enemy/necromancer/E_necromancer.gd" id="1_xncm0"]
-[ext_resource type="Script" path="res://scripts/classes/statemachine.gd" id="2_64ciu"]
-[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/present/Necromancer_creativekind-Sheet.png" id="2_in20k"]
-[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/past/Necromancer_creativekind-Sheet.png" id="3_3ir57"]
+[ext_resource type="Texture2D" uid="uid://d1j8wfqafmgdy" path="res://enemy/present/Necromancer_creativekind-Sheet.png" id="3_3ir57"]
+[ext_resource type="Script" path="res://enemy/necromancer/nerco_statemachine.gd" id="3_dahnq"]
 [ext_resource type="Script" path="res://scripts/enemyhealth.gd" id="4_jihrk"]
 [ext_resource type="Script" path="res://enemy/necromancer/EnemyIdle.gd" id="4_njccg"]
 [ext_resource type="Script" path="res://enemy/necromancer/EnemyChase.gd" id="5_43ipp"]
@@ -13,55 +12,55 @@
 [ext_resource type="Script" path="res://enemy/necromancer/EnemyDeath.gd" id="10_xiyy0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snmvr"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(1280, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ye20j"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(1440, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjvd3"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(1600, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mwi60"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(1760, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsyit"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(1920, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7n6bs"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(0, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34h8d"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(160, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81hgh"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(320, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3lgx"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(480, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2r0fe"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(640, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2t1ni"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(800, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_itbap"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(960, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwse2"]
-atlas = ExtResource("2_in20k")
+atlas = ExtResource("3_3ir57")
 region = Rect2(1120, 256, 160, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pmfu"]
@@ -207,7 +206,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_end",
-"speed": 10.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,7 +235,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_warm_up",
-"speed": 10.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -282,7 +281,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -362,20 +361,25 @@ bg_color = Color(0.545098, 0.545098, 0.545098, 0)
 bg_color = Color(0.975664, 4.57242e-06, 1.54018e-06, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0orlc"]
-height = 42.5
+radius = 13.75
+height = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fk2"]
-size = Vector2(70, 70)
+size = Vector2(80, 82.5)
 
 [node name="ENecromancer" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_xncm0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_5hh6h")
-animation = &"chase"
+animation = &"damage"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="attackHitbox" type="Area2D" parent="."]
 
@@ -389,7 +393,7 @@ scale = Vector2(14, 14)
 shape = SubResource("CircleShape2D_exnny")
 
 [node name="EnemyStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_64ciu")
+script = ExtResource("3_dahnq")
 initial_state = NodePath("EnemyIdle")
 
 [node name="EnemyIdle" type="Node2D" parent="EnemyStateMachine"]
@@ -402,7 +406,6 @@ script = ExtResource("5_43ipp")
 script = ExtResource("6_wn0gn")
 
 [node name="EnemyAttackFinish" type="Node2D" parent="EnemyStateMachine"]
-scale = Vector2(1, 1)
 script = ExtResource("8_76yaw")
 
 [node name="EnemyTakeDamage" type="Node2D" parent="EnemyStateMachine"]
@@ -412,9 +415,9 @@ script = ExtResource("9_jwx1b")
 script = ExtResource("10_xiyy0")
 
 [node name="Healthbar" type="ProgressBar" parent="."]
-offset_left = -10.0
+offset_left = -16.0
 offset_top = 29.0
-offset_right = 10.0
+offset_right = 16.0
 offset_bottom = 33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vdhkm")
 theme_override_styles/fill = SubResource("StyleBoxFlat_peylx")
@@ -425,13 +428,13 @@ script = ExtResource("4_jihrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.25)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_0orlc")
 debug_color = Color(0.945868, 5.87195e-06, 0.590462, 0.42)
 
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="attackShape" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 2.38418e-06)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v6fk2")
 debug_color = Color(0.163386, 0.000316075, 0.2996, 0.42)
