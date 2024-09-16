@@ -18,11 +18,10 @@ var attack_ip = false # Player attack in progress
 
 var health = 10
 signal health_changed(new_value)
-var player_alive = true
 
 #Realmtek
-var realm_cooldown : float = 0.00
-var realm_active : bool = false
+var realm_cooldown: float = 0.00
+var realm_active: bool = false
 
 # Sprite for hurt effect
 @onready var sprite: Sprite2D = $Sprite2D # Assuming the sprite is named 'Sprite2D'
@@ -35,6 +34,7 @@ func _ready():
 	idle_timer.wait_time = idle_twirl_threshold
 	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
 	add_child(idle_timer)
+
 
 	# Hurt timer setup
 	hurt_timer.one_shot = true
@@ -67,13 +67,13 @@ func _physics_process(delta):
 	# Update the blend position of the animation based on movement
 	update_animation_parameter(velocity)
 
+
 	# Combat
 	attack()
-	#enemy_attack()
 
 	if health <= 0:
-		player_alive = false # Add Game over/death screen
 		health = 0
+		get_tree().change_scene_to_file("res://autoloads/scenes/deathscene.tscn")
 
 
 	# Realmtek
@@ -81,10 +81,10 @@ func _physics_process(delta):
 		realm_cooldown -= delta
 	if Input.is_action_pressed("lantern") and realm_cooldown <= 0:
 		if realm_active:
-			position.x -= 6786
+			position.x -= 7169
 			realm_active = false
 		else:
-			position.x += 6786
+			position.x += 7169
 			realm_active = true
 		realm_cooldown = 1.00
 
@@ -99,6 +99,7 @@ func update_animation_parameter(movement: Vector2):
 		animation_tree["parameters/conditions/Idle"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
 
+
 		# Start the idle timer only if it is stopped
 		if idle_timer.is_stopped() and !long_idle:
 			idle_timer.start()
@@ -108,11 +109,13 @@ func update_animation_parameter(movement: Vector2):
 		long_idle = false
 		idle_timer.stop() # Stop the timer when moving
 
+
 	# Set the blend position based on whether in long idle state
 	if long_idle:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(1, 0)
 	else:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(-1, 0)
+
 
 	# Attack animation
 	if Input.is_action_just_pressed("basic_attack"):
@@ -135,6 +138,7 @@ func _on_idle_timer_timeout():
 
 # Hurt effect for when player is hit
 func _on_player_hit():
+	SoundManager.play_sound("Hurt")
 	sprite.modulate = Color(1, 0, 0) # Change sprite color to red
 	hurt_timer.start()
 
@@ -157,6 +161,7 @@ func _on_player_hitbox_body_exited(body):
 
 func attack():
 	if Input.is_action_just_pressed("basic_attack"):
+		SoundManager.play_sound("Swing")
 		long_idle = false
 		Global.player_current_attack = true
 		attack_ip = true
