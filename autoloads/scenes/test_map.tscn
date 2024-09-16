@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ca5hw5swmeuej" path="res://common/tilesets/top down grass tileset/TX Tileset Wall.png" id="5_oklf1"]
 [ext_resource type="Texture2D" uid="uid://i1ylsn11ky1m" path="res://common/tilesets/ACtual top down grass/TX_Tileset_Grass.png" id="7_bv72y"]
 [ext_resource type="Texture2D" uid="uid://d42gdyvry8yu" path="res://common/tilesets/ACtual top down grass/TX_Plant.png" id="10_d18ie"]
-[ext_resource type="Script" path="res://autoloads/scenes/Pillars.gd" id="13_k2jcd"]
+[ext_resource type="Script" path="res://scripts/Pillars.gd" id="13_k2jcd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6o0x"]
 texture = ExtResource("1_vh0xj")
