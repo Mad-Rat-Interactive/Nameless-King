@@ -11,16 +11,13 @@ position = Vector2(811.25, 408.25)
 scale = Vector2(8.0975, 4.0675)
 texture = ExtResource("3_orpnm")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-stretch_mode = 1
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
-layout_mode = 2
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 52.0
+offset_right = 1972.0
+offset_bottom = 1088.0
+scale = Vector2(0.6, 0.6)
 stream = ExtResource("1_82m6n")
 autoplay = true
-expand = true
 script = ExtResource("2_0nyl7")
 
-[connection signal="finished" from="AspectRatioContainer/VideoStreamPlayer" to="AspectRatioContainer/VideoStreamPlayer" method="_on_finished"]
+[connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
