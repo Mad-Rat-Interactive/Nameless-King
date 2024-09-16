@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed = 1.5
 
@@ -8,6 +9,7 @@ var long_idle = false
 
 @onready var animation_tree: AnimationTree = $Animation/AnimationTree
 @onready var idle_timer: Timer = Timer.new()
+@onready var sword: Area2D = $sword
 
 # Combat variables
 var enemy_inattack_range = false
@@ -18,8 +20,8 @@ var health = 10
 signal health_changed(new_value)
 
 #Realmtek
-var realm_cooldown : float = 0.00
-var realm_active : bool = false
+var realm_cooldown: float = 0.00
+var realm_active: bool = false
 
 # Sprite for hurt effect
 @onready var sprite: Sprite2D = $Sprite2D # Assuming the sprite is named 'Sprite2D'
@@ -33,6 +35,7 @@ func _ready():
 	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
 	add_child(idle_timer)
 
+
 	# Hurt timer setup
 	hurt_timer.one_shot = true
 	hurt_timer.wait_time = 0.2 # Time for the hurt effect (in seconds)
@@ -45,12 +48,16 @@ func _physics_process(delta):
 
 	# Input checks for movement directions
 	if Input.is_action_pressed("up"):
+		sword.rotation_degrees = 270
 		velocity.y -= 1
 	if Input.is_action_pressed("down"):
+		sword.rotation_degrees = 90
 		velocity.y += 1
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1
+		sword.rotation_degrees = 180
 	if Input.is_action_pressed("right"):
+		sword.rotation_degrees = 0
 		velocity.x += 1
 
 	# Normalize the velocity and scale it by speed if the player is moving
@@ -60,13 +67,12 @@ func _physics_process(delta):
 	# Update the blend position of the animation based on movement
 	update_animation_parameter(velocity)
 
+
 	# Combat
 	attack()
-	enemy_attack()
 
 	if health <= 0:
 		health = 0
-		queue_free()
 		get_tree().change_scene_to_file("res://autoloads/scenes/deathscene.tscn")
 
 
@@ -93,6 +99,7 @@ func update_animation_parameter(movement: Vector2):
 		animation_tree["parameters/conditions/Idle"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
 
+
 		# Start the idle timer only if it is stopped
 		if idle_timer.is_stopped() and !long_idle:
 			idle_timer.start()
@@ -102,11 +109,13 @@ func update_animation_parameter(movement: Vector2):
 		long_idle = false
 		idle_timer.stop() # Stop the timer when moving
 
+
 	# Set the blend position based on whether in long idle state
 	if long_idle:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(1, 0)
 	else:
 		animation_tree["parameters/Idle/blend_position"] = Vector2(-1, 0)
+
 
 	# Attack animation
 	if Input.is_action_just_pressed("basic_attack"):
@@ -159,12 +168,12 @@ func attack():
 		$deal_attack_timer.start()
 
 func enemy_attack():
-	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health -= 2
-		health_changed.emit(health)
-		_on_player_hit() # Trigger the hurt effect when attacked
-		enemy_attack_cooldown = false
-		$take_damage_cooldown.start()
+	#if enemy_inattack_range and enemy_attack_cooldown == true:
+	health -= 2
+	health_changed.emit(health)
+	_on_player_hit() # Trigger the hurt effect when attacked
+	enemy_attack_cooldown = false
+	$take_damage_cooldown.start()
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
@@ -173,3 +182,8 @@ func _on_deal_attack_timer_timeout(): # When attack ends
 	$deal_attack_timer.stop()
 	Global.player_current_attack = false
 	attack_ip = false
+
+
+func _on_sword_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.take_damage(4)

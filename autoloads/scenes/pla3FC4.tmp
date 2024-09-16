@@ -66,18 +66,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [2]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sword/attackArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_nd17h"]
 resource_name = "attack_down"
@@ -129,18 +117,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sword/attackArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_vya4d"]
@@ -194,18 +170,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sword/attackArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_jma14"]
 resource_name = "attack_right"
@@ -258,18 +222,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sword/attackArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_r4k2h"]
 resource_name = "attack_up"
@@ -321,18 +273,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sword/attackArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_tlx0q"]
@@ -846,7 +786,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-237, 65.369)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebqgm"]
-size = Vector2(27, 28)
+size = Vector2(22, 22)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_hx5ka")
@@ -866,7 +806,6 @@ position = Vector2(1, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Hitbox"]
 position = Vector2(-1, 7)
 shape = SubResource("CapsuleShape2D_x3uqy")
-disabled = true
 
 [node name="take_damage_cooldown" type="Timer" parent="."]
 wait_time = 0.5
@@ -913,18 +852,12 @@ texture_scale = 0.6
 
 [node name="sword" type="Area2D" parent="."]
 position = Vector2(0, 7)
-collision_layer = 3
-collision_mask = 3
 
 [node name="attackArea" type="CollisionShape2D" parent="sword"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(13.5, 0)
+position = Vector2(11, 0)
 shape = SubResource("RectangleShape2D_ebqgm")
-disabled = true
 
 [connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="take_damage_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
-[connection signal="body_entered" from="sword" to="." method="_on_sword_body_entered"]
