@@ -32,7 +32,7 @@ script = SubResource("GDScript_gh7dl")
 
 [node name="Player" parent="." instance=ExtResource("2_5i3be")]
 y_sort_enabled = true
-position = Vector2(2294, -1084)
+position = Vector2(1079, -89)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
