@@ -16,7 +16,6 @@ var attack_ip = false # Player attack in progress
 
 var health = 10
 signal health_changed(new_value)
-var player_alive = true
 
 #Realmtek
 var realm_cooldown : float = 0.00
@@ -66,8 +65,9 @@ func _physics_process(delta):
 	enemy_attack()
 
 	if health <= 0:
-		player_alive = false # Add Game over/death screen
 		health = 0
+		queue_free()
+		get_tree().change_scene_to_file("res://autoloads/scenes/deathscene.tscn")
 
 
 	# Realmtek

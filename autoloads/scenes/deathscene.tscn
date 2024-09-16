@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://nac7b77geu66"]
+
+[ext_resource type="VideoStream" path="res://autoloads/scenes/deathscreen.ogv" id="1_82m6n"]
+[ext_resource type="Script" path="res://scripts/deathscreen.gd" id="2_0nyl7"]
+
+[node name="Node" type="Node"]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+stretch_mode = 3
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+layout_mode = 2
+stream = ExtResource("1_82m6n")
+autoplay = true
+expand = true
+script = ExtResource("2_0nyl7")
+
+[connection signal="finished" from="AspectRatioContainer/VideoStreamPlayer" to="AspectRatioContainer/VideoStreamPlayer" method="_on_finished"]
