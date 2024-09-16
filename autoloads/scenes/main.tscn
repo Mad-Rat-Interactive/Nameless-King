@@ -175,7 +175,10 @@ offset_right = 196.0
 offset_bottom = -37.0
 text = "WASD Controls
 M1 for Swing
-Spacebar Lantern"
+Spacebar Lantern
+
+
+Goal: Touch ALL Pillars"
 label_settings = SubResource("LabelSettings_27r0d")
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]
