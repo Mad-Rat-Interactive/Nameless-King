@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c5cghjvbrnlb4"]
+[gd_scene load_steps=33 format=3 uid="uid://c5cghjvbrnlb4"]
 
 [ext_resource type="Texture2D" uid="uid://bunp2hksw7q21" path="res://common/shader/light.png" id="1_kdnac"]
 [ext_resource type="Texture2D" uid="uid://bfxuelpqqt7tw" path="res://common/tilesets/top down grass tileset/TX Tileset Grass.png" id="1_vh0xj"]
@@ -2320,6 +2320,12 @@ radius = 67.0671
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgn3e"]
 radius = 60.075
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bq7v"]
+radius = 88.278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t7ooq"]
+radius = 82.28
+
 [node name="map_root" type="Node2D"]
 
 [node name="top_map" type="TileMap" parent="."]
@@ -2383,7 +2389,23 @@ position = Vector2(130, -37)
 position = Vector2(2181, 1368)
 shape = SubResource("CircleShape2D_pgn3e")
 
+[node name="Pillar 3" type="Area2D" parent="Pillars"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 3"]
+position = Vector2(8848, -1700)
+shape = SubResource("CircleShape2D_1bq7v")
+
+[node name="Pillar 4" type="Area2D" parent="Pillars"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 4"]
+position = Vector2(8848, 1165)
+shape = SubResource("CircleShape2D_t7ooq")
+
 [connection signal="body_entered" from="Pillars/Pillar 1" to="Pillars" method="_on_pillar_1_body_entered"]
 [connection signal="body_exited" from="Pillars/Pillar 1" to="Pillars" method="_on_pillar_1_body_exited"]
 [connection signal="body_entered" from="Pillars/Pillar 2" to="Pillars" method="_on_pillar_2_body_entered"]
 [connection signal="body_exited" from="Pillars/Pillar 2" to="Pillars" method="_on_pillar_2_body_exited"]
+[connection signal="body_entered" from="Pillars/Pillar 3" to="Pillars" method="_on_pillar_3_body_entered"]
+[connection signal="body_exited" from="Pillars/Pillar 3" to="Pillars" method="_on_pillar_3_body_exited"]
+[connection signal="body_entered" from="Pillars/Pillar 4" to="Pillars" method="_on_pillar_4_body_entered"]
+[connection signal="body_exited" from="Pillars/Pillar 4" to="Pillars" method="_on_pillar_4_body_exited"]
