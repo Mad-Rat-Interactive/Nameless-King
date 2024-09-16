@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c5cghjvbrnlb4"]
+[gd_scene load_steps=28 format=3 uid="uid://c5cghjvbrnlb4"]
 
 [ext_resource type="Texture2D" uid="uid://bunp2hksw7q21" path="res://common/shader/light.png" id="1_kdnac"]
 [ext_resource type="Texture2D" uid="uid://bfxuelpqqt7tw" path="res://common/tilesets/top down grass tileset/TX Tileset Grass.png" id="1_vh0xj"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://ca5hw5swmeuej" path="res://common/tilesets/top down grass tileset/TX Tileset Wall.png" id="5_oklf1"]
 [ext_resource type="Texture2D" uid="uid://i1ylsn11ky1m" path="res://common/tilesets/ACtual top down grass/TX_Tileset_Grass.png" id="7_bv72y"]
 [ext_resource type="Texture2D" uid="uid://d42gdyvry8yu" path="res://common/tilesets/ACtual top down grass/TX_Plant.png" id="10_d18ie"]
-[ext_resource type="Script" path="res://scripts/Pillars.gd" id="13_k2jcd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6o0x"]
 texture = ExtResource("1_vh0xj")
@@ -2314,18 +2313,6 @@ sources/8 = SubResource("TileSetAtlasSource_wgsvb")
 sources/10 = SubResource("TileSetAtlasSource_ogpoq")
 sources/11 = SubResource("TileSetAtlasSource_xluco")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w8h7s"]
-radius = 67.0671
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pgn3e"]
-radius = 60.075
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1bq7v"]
-radius = 88.278
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_t7ooq"]
-radius = 82.28
-
 [node name="map_root" type="Node2D"]
 
 [node name="top_map" type="TileMap" parent="."]
@@ -2372,40 +2359,3 @@ position = Vector2(47, -638)
 position = Vector2(-524, 562)
 build_mode = 1
 polygon = PackedVector2Array(158, -2, 139, -697, 181, -1752, 4440, -1739, 4433, 1361, 4433, 1916, 220, 1886, 163, 2, -170, -17, -149, 2106, 4597, 2082, 4724, -1914, -85, -2010, -170, -19)
-
-[node name="Pillars" type="Node2D" parent="."]
-script = ExtResource("13_k2jcd")
-
-[node name="Pillar 1" type="Area2D" parent="Pillars"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 1"]
-position = Vector2(2311, -1457)
-shape = SubResource("CircleShape2D_w8h7s")
-
-[node name="Pillar 2" type="Area2D" parent="Pillars"]
-position = Vector2(130, -37)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 2"]
-position = Vector2(2181, 1368)
-shape = SubResource("CircleShape2D_pgn3e")
-
-[node name="Pillar 3" type="Area2D" parent="Pillars"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 3"]
-position = Vector2(8848, -1700)
-shape = SubResource("CircleShape2D_1bq7v")
-
-[node name="Pillar 4" type="Area2D" parent="Pillars"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 4"]
-position = Vector2(8848, 1165)
-shape = SubResource("CircleShape2D_t7ooq")
-
-[connection signal="body_entered" from="Pillars/Pillar 1" to="Pillars" method="_on_pillar_1_body_entered"]
-[connection signal="body_exited" from="Pillars/Pillar 1" to="Pillars" method="_on_pillar_1_body_exited"]
-[connection signal="body_entered" from="Pillars/Pillar 2" to="Pillars" method="_on_pillar_2_body_entered"]
-[connection signal="body_exited" from="Pillars/Pillar 2" to="Pillars" method="_on_pillar_2_body_exited"]
-[connection signal="body_entered" from="Pillars/Pillar 3" to="Pillars" method="_on_pillar_3_body_entered"]
-[connection signal="body_exited" from="Pillars/Pillar 3" to="Pillars" method="_on_pillar_3_body_exited"]
-[connection signal="body_entered" from="Pillars/Pillar 4" to="Pillars" method="_on_pillar_4_body_entered"]
-[connection signal="body_exited" from="Pillars/Pillar 4" to="Pillars" method="_on_pillar_4_body_exited"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlexwhk5oynbb"]
+[gd_scene load_steps=13 format=3 uid="uid://dlexwhk5oynbb"]
 
 [ext_resource type="PackedScene" uid="uid://c5cghjvbrnlb4" path="res://autoloads/scenes/test_map.tscn" id="1_qviu6"]
 [ext_resource type="PackedScene" uid="uid://cf2thel27u0br" path="res://autoloads/scenes/player.tscn" id="2_5i3be"]
 [ext_resource type="PackedScene" uid="uid://cdt8tgfumtnsr" path="res://autoloads/scenes/enemy.tscn" id="3_jwm1u"]
 [ext_resource type="Script" path="res://scripts/Health Bar.gd" id="3_uhonl"]
+[ext_resource type="Script" path="res://scripts/Pillars.gd" id="5_2h66r"]
 
 [sub_resource type="GDScript" id="GDScript_gh7dl"]
 script/source = "extends Node2D
@@ -24,6 +25,18 @@ bg_color = Color(0.450648, 0.450648, 0.450648, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8u7a"]
 bg_color = Color(0.904713, 0, 0.0488151, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5o6j"]
+radius = 67.0671
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08rqq"]
+radius = 60.075
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ik4yh"]
+radius = 88.278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2urec"]
+radius = 82.28
 
 [node name="Main" type="Node"]
 
@@ -61,4 +74,40 @@ position = Vector2(-289, -13)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.521413, 0.34948, 0.494242, 1)
 
+[node name="Pillars" type="Node2D" parent="."]
+script = ExtResource("5_2h66r")
+
+[node name="Pillar 1" type="Area2D" parent="Pillars"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 1"]
+position = Vector2(2311, -1457)
+shape = SubResource("CircleShape2D_j5o6j")
+
+[node name="Pillar 2" type="Area2D" parent="Pillars"]
+position = Vector2(130, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 2"]
+position = Vector2(2181, 1368)
+shape = SubResource("CircleShape2D_08rqq")
+
+[node name="Pillar 3" type="Area2D" parent="Pillars"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 3"]
+position = Vector2(8848, -1700)
+shape = SubResource("CircleShape2D_ik4yh")
+
+[node name="Pillar 4" type="Area2D" parent="Pillars"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 4"]
+position = Vector2(8848, 1165)
+shape = SubResource("CircleShape2D_2urec")
+
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]
+[connection signal="body_entered" from="Pillars/Pillar 1" to="Pillars" method="_on_pillar_1_body_entered"]
+[connection signal="body_exited" from="Pillars/Pillar 1" to="Pillars" method="_on_pillar_1_body_exited"]
+[connection signal="body_entered" from="Pillars/Pillar 2" to="Pillars" method="_on_pillar_2_body_entered"]
+[connection signal="body_exited" from="Pillars/Pillar 2" to="Pillars" method="_on_pillar_2_body_exited"]
+[connection signal="body_entered" from="Pillars/Pillar 3" to="Pillars" method="_on_pillar_3_body_entered"]
+[connection signal="body_exited" from="Pillars/Pillar 3" to="Pillars" method="_on_pillar_3_body_exited"]
+[connection signal="body_entered" from="Pillars/Pillar 4" to="Pillars" method="_on_pillar_4_body_entered"]
+[connection signal="body_exited" from="Pillars/Pillar 4" to="Pillars" method="_on_pillar_4_body_exited"]
