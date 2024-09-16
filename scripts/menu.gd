@@ -8,6 +8,10 @@ func _on_play_pressed():
 	SoundManager.stop_sound("Main")
 	get_tree().change_scene_to_file("res://autoloads/scenes/cutscene.tscn")
 
+func _on_credits_pressed():
+	get_tree().change_scene_to_file("res://autoloads/scenes/credits.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
