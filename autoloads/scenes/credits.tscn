@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq6fp4ea5p233"]
+
+[ext_resource type="Texture2D" uid="uid://260rbxgia6u3" path="res://credits.png" id="1_210os"]
+[ext_resource type="Script" path="res://scripts/return_menu.gd" id="2_gap8p"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Credits" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(542, 314)
+texture = ExtResource("1_210os")
+
+[node name="Return" type="Button" parent="."]
+offset_left = 814.0
+offset_top = 591.0
+offset_right = 894.0
+offset_bottom = 627.0
+text = "Return"
+script = ExtResource("2_gap8p")
+
+[connection signal="pressed" from="Return" to="Return" method="_on_pressed"]
