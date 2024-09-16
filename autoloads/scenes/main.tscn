@@ -33,7 +33,7 @@ radius = 67.0671
 radius = 60.075
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ik4yh"]
-radius = 88.278
+radius = 66.0076
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2urec"]
 radius = 82.28
@@ -94,13 +94,13 @@ shape = SubResource("CircleShape2D_08rqq")
 [node name="Pillar 3" type="Area2D" parent="Pillars"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 3"]
-position = Vector2(8848, -1700)
+position = Vector2(9478, -1484)
 shape = SubResource("CircleShape2D_ik4yh")
 
 [node name="Pillar 4" type="Area2D" parent="Pillars"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/Pillar 4"]
-position = Vector2(8848, 1165)
+position = Vector2(9478, 1331)
 shape = SubResource("CircleShape2D_2urec")
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]

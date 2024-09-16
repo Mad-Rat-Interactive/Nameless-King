@@ -5,7 +5,7 @@ var pillar2_inZone = false
 var pillar3_inZone = false
 var pillar4_inZone = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	activate_pillar()
 
 func activate_pillar():
