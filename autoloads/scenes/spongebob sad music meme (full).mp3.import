@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dq1rnf8pfkvdg"
+path="res://.godot/imported/spongebob sad music meme (full).mp3-817a35ebe4381da1b129b85530b07bbf.mp3str"
+
+[deps]
+
+source_file="res://autoloads/scenes/spongebob sad music meme (full).mp3"
+dest_files=["res://.godot/imported/spongebob sad music meme (full).mp3-817a35ebe4381da1b129b85530b07bbf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

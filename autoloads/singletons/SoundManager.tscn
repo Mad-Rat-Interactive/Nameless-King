@@ -24,3 +24,5 @@ max_distance = 100000.0
 
 [node name="Flame" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_abdiy")
+
+[node name="Sad" type="AudioStreamPlayer2D" parent="."]
