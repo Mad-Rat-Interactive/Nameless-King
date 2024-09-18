@@ -8,7 +8,6 @@ extends TileMap
 
 #Upon input checks if pillar has been activated and turns on light if it has
 func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
 		if Global.pillar_1:
 			p1.show()
 		if Global.pillar_2:
@@ -17,3 +16,4 @@ func _process(_delta):
 			p3.show()
 		if Global.pillar_4:
 			p4.show()
+
