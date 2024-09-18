@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdrfqvub2i21b"]
+
+[ext_resource type="Texture2D" uid="uid://bs3245q5ka273" path="res://autoloads/sdasdsadsad.png" id="1_0pgje"]
+[ext_resource type="Texture2D" uid="uid://xlqwfc88h3dp" path="res://autoloads/scenes/DeathScreen/Solid_black.png" id="1_mkgo6"]
+[ext_resource type="Script" path="res://autoloads/scenes/ending.gd" id="1_qnxjv"]
+[ext_resource type="FontFile" uid="uid://c72yckh877fel" path="res://Mantinia.otf" id="3_y662x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8pkn0"]
+font = ExtResource("3_y662x")
+font_size = 36
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qnxjv")
+
+[node name="black_backround" type="Sprite2D" parent="."]
+position = Vector2(811.25, 408.25)
+scale = Vector2(8.0975, 4.0675)
+texture = ExtResource("1_mkgo6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_0pgje")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 785.0
+offset_top = 217.0
+offset_right = 1064.0
+offset_bottom = 370.0
+text = "Our Fault
+
+To Be Continued"
+label_settings = SubResource("LabelSettings_8pkn0")

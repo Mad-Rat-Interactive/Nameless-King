@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq6fp4ea5p233"]
+[gd_scene load_steps=4 format=3 uid="uid://ds3k5p0ou7ufi"]
 
 [ext_resource type="Texture2D" uid="uid://260rbxgia6u3" path="res://credits.png" id="1_210os"]
+[ext_resource type="Texture2D" uid="uid://xlqwfc88h3dp" path="res://autoloads/scenes/DeathScreen/Solid_black.png" id="1_ja4mp"]
 [ext_resource type="Script" path="res://scripts/return_menu.gd" id="2_gap8p"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="black_backround" type="Sprite2D" parent="."]
+position = Vector2(793, 336)
+scale = Vector2(8.0975, 4.0675)
+texture = ExtResource("1_ja4mp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Credits" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(542, 314)
+position = Vector2(739, 314)
 texture = ExtResource("1_210os")
 
 [node name="Return" type="Button" parent="."]

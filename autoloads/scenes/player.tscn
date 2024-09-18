@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://n1j6mq0vwuw" path="res://player/sprites/down attack.png" id="10_qovlk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3uqy"]
-radius = 11.0
+radius = 8.0
 height = 38.0
 
 [sub_resource type="Animation" id="Animation_mh7nj"]
