@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://0klqwagnvyha"]
+[gd_scene load_steps=7 format=3 uid="uid://0klqwagnvyha"]
 
 [ext_resource type="Script" path="res://autoloads/singletons/SoundManager.gd" id="1_6fypk"]
 [ext_resource type="AudioStream" uid="uid://dvcfocmfbvts0" path="res://autoloads/scenes/[No Copyright Music] The Last Soul - (Royalty Free Epic Music).mp3" id="2_gdu0m"]
 [ext_resource type="AudioStream" uid="uid://bupwrrkq1hv3r" path="res://autoloads/scenes/Swish.mp3" id="3_74onw"]
 [ext_resource type="AudioStream" uid="uid://cv4chmmwhpmkl" path="res://autoloads/scenes/stab.mp3" id="4_00nrn"]
 [ext_resource type="AudioStream" uid="uid://o3r4wgfswssr" path="res://autoloads/scenes/TitleScreen/flame.mp3" id="5_abdiy"]
+[ext_resource type="AudioStream" uid="uid://dq1rnf8pfkvdg" path="res://autoloads/scenes/spongebob sad music meme (full).mp3" id="6_hlrkk"]
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_6fypk")
@@ -26,3 +27,6 @@ max_distance = 100000.0
 stream = ExtResource("5_abdiy")
 
 [node name="Sad" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_hlrkk")
+volume_db = -10.0
+max_distance = 1e+06

@@ -169,13 +169,14 @@ position = Vector2(8991, -854)
 position = Vector2(921, 1166)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 59.0
-offset_top = -112.0
-offset_right = 196.0
-offset_bottom = -37.0
+offset_left = -83.0
+offset_top = -132.0
+offset_right = 97.0
+offset_bottom = 40.0
 text = "WASD Controls
 M1 for Swing
 Spacebar Lantern
+F to Activate Pillars
 
 
 Goal: Touch ALL Pillars"

@@ -10,4 +10,5 @@ var pillar_4 = false
 
 func _physics_process(delta):
 	if pillar_1 and pillar_2 and pillar_3 and pillar_4:
-		get_tree().change_scene_to_file("res://autoloads/scenes/cutscene.tscn")
+		SoundManager.play_sound("Sad")
+		get_tree().change_scene_to_file("res://autoloads/scenes/ending.tscn")

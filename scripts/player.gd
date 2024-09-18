@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var speed = 1.5
+@export var speed = 1.75
 
 # Animation variables
 var long_idle = false
