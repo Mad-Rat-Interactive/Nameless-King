@@ -9,7 +9,7 @@
 font = ExtResource("3_y662x")
 font_size = 36
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 script = ExtResource("1_qnxjv")
 
 [node name="black_backround" type="Sprite2D" parent="."]
