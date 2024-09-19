@@ -5,6 +5,7 @@ extends State
 
 func Enter():
 	enemy.velocity = Vector2.ZERO
+	SoundManager.play_sound("Knight_Death")
 	$"../../AnimatedSprite2D".play("death")
 
 func Physics_Update(_delta: float):

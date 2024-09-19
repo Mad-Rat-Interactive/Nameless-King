@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0klqwagnvyha"]
+[gd_scene load_steps=12 format=3 uid="uid://0klqwagnvyha"]
 
 [ext_resource type="Script" path="res://autoloads/singletons/SoundManager.gd" id="1_6fypk"]
 [ext_resource type="AudioStream" uid="uid://dvcfocmfbvts0" path="res://autoloads/scenes/[No Copyright Music] The Last Soul - (Royalty Free Epic Music).mp3" id="2_gdu0m"]
@@ -6,27 +6,48 @@
 [ext_resource type="AudioStream" uid="uid://cv4chmmwhpmkl" path="res://autoloads/scenes/stab.mp3" id="4_00nrn"]
 [ext_resource type="AudioStream" uid="uid://o3r4wgfswssr" path="res://autoloads/scenes/TitleScreen/flame.mp3" id="5_abdiy"]
 [ext_resource type="AudioStream" uid="uid://dq1rnf8pfkvdg" path="res://autoloads/scenes/spongebob sad music meme (full).mp3" id="6_hlrkk"]
+[ext_resource type="AudioStream" uid="uid://cyny4yfov35n" path="res://enemy/knights/knight_death.mp3" id="7_0hsj0"]
+[ext_resource type="AudioStream" uid="uid://ceib03hbvod" path="res://enemy/knights/knight_death2.mp3" id="7_1vni8"]
+[ext_resource type="AudioStream" uid="uid://cr4mrnbc8gsyq" path="res://enemy/necromancer/necromancer_death.mp3" id="8_dihfy"]
+[ext_resource type="AudioStream" uid="uid://jt0ah78jpspm" path="res://enemy/necromancer/necromancer_hurt.mp3" id="9_7v0sn"]
+[ext_resource type="AudioStream" uid="uid://b2h8srubj2tsw" path="res://enemy/common/Spongebob Sad - Sound Effect(HD).mp3" id="11_edyuy"]
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_6fypk")
 
-[node name="Main" type="AudioStreamPlayer2D" parent="."]
+[node name="Main" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gdu0m")
 volume_db = -10.0
-max_distance = 100000.0
 
-[node name="Swing" type="AudioStreamPlayer2D" parent="."]
+[node name="Swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_74onw")
-max_distance = 100000.0
+volume_db = -5.0
 
-[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_00nrn")
-max_distance = 100000.0
+volume_db = -15.0
 
-[node name="Flame" type="AudioStreamPlayer2D" parent="."]
+[node name="Flame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_abdiy")
 
-[node name="Sad" type="AudioStreamPlayer2D" parent="."]
+[node name="Sad" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_hlrkk")
 volume_db = -10.0
-max_distance = 1e+06
+
+[node name="Knight_Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1vni8")
+
+[node name="Necromancer_Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dihfy")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="Necromancer_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_7v0sn")
+volume_db = -10.0
+
+[node name="Knight_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0hsj0")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_edyuy")

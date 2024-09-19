@@ -42,6 +42,7 @@ radius = 82.28
 
 [sub_resource type="LabelSettings" id="LabelSettings_27r0d"]
 font = ExtResource("7_unbxx")
+font_size = 48
 
 [node name="Main" type="Node"]
 
@@ -50,7 +51,7 @@ script = SubResource("GDScript_gh7dl")
 
 [node name="Player" parent="." instance=ExtResource("2_5i3be")]
 y_sort_enabled = true
-position = Vector2(0, -23)
+position = Vector2(-74, -20)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -103,7 +104,7 @@ position = Vector2(9478, 1331)
 shape = SubResource("CircleShape2D_2urec")
 
 [node name="ENecromancer" parent="." instance=ExtResource("7_oaqdv")]
-position = Vector2(582, 40)
+position = Vector2(480, -3)
 
 [node name="EKnights2" parent="." instance=ExtResource("6_4xr1q")]
 position = Vector2(8036, -26)
@@ -115,10 +116,10 @@ position = Vector2(9473, -125)
 position = Vector2(9473, 58)
 
 [node name="EKnights5" parent="." instance=ExtResource("6_4xr1q")]
-position = Vector2(9497, -1107)
+position = Vector2(9468, -1041)
 
 [node name="EKnights6" parent="." instance=ExtResource("6_4xr1q")]
-position = Vector2(9403, -1416)
+position = Vector2(9495, -1394)
 
 [node name="EKnights7" parent="." instance=ExtResource("6_4xr1q")]
 position = Vector2(9411, 1158)
@@ -145,10 +146,10 @@ position = Vector2(2232, -1307)
 position = Vector2(2394, -1298)
 
 [node name="ENecromancer8" parent="." instance=ExtResource("7_oaqdv")]
-position = Vector2(1155, -699)
+position = Vector2(1350, -594)
 
 [node name="ENecromancer9" parent="." instance=ExtResource("7_oaqdv")]
-position = Vector2(1362, 657)
+position = Vector2(1937, 331)
 
 [node name="ENecromancer10" parent="." instance=ExtResource("7_oaqdv")]
 position = Vector2(1842, -690)
@@ -166,20 +167,130 @@ position = Vector2(7911, 1117)
 position = Vector2(8991, -854)
 
 [node name="ENecromancer11" parent="." instance=ExtResource("7_oaqdv")]
-position = Vector2(921, 1166)
+position = Vector2(1133, 1428)
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 636.0
+offset_top = -137.0
+offset_right = 1433.0
+offset_bottom = 61.0
+scale = Vector2(0.335, 0.335)
+text = "The Path is Blocked off
+The lantern will send you to the past
+Press Spacebar"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 48.0
+offset_top = -113.0
+offset_right = 274.0
+offset_bottom = 80.0
+scale = Vector2(0.335, 0.335)
+text = "Move with WASD
+
+
+
+
+There is an Enemy Up ahead
+Attack with M1"
+label_settings = SubResource("LabelSettings_27r0d")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -83.0
-offset_top = -132.0
-offset_right = 97.0
-offset_bottom = 40.0
-text = "WASD Controls
-M1 for Swing
-Spacebar Lantern
-F to Activate Pillars
+offset_left = -175.0
+offset_top = -117.0
+offset_right = 45.0
+offset_bottom = 76.0
+scale = Vector2(0.335, 0.335)
+text = "Welcome Back Sire.
+You have been Granted the
+Lantern of Reversal
 
 
-Goal: Touch ALL Pillars"
+Follow My Voice,
+I will Guide you."
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 2266.0
+offset_top = 192.0
+offset_right = 2912.0
+offset_bottom = 859.0
+scale = Vector2(0.335, 0.335)
+text = "A well Below"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 7905.0
+offset_top = -162.0
+offset_right = 8433.0
+offset_bottom = 36.0
+scale = Vector2(0.335, 0.335)
+text = "Becareful Sire
+You will encounter 
+enemies from your past"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 9433.0
+offset_top = 192.0
+offset_right = 10079.0
+offset_bottom = 859.0
+scale = Vector2(0.335, 0.335)
+text = "A well Below"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 9434.0
+offset_top = -255.0
+offset_right = 10080.0
+offset_bottom = 412.0
+scale = Vector2(0.335, 0.335)
+text = "A well Above"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 2266.0
+offset_top = -254.0
+offset_right = 2912.0
+offset_bottom = 413.0
+scale = Vector2(0.335, 0.335)
+text = "A well Above"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 1386.0
+offset_top = -161.0
+offset_right = 2032.0
+offset_bottom = 506.0
+scale = Vector2(0.335, 0.335)
+text = "To get into the Castle you wil
+need to activate the wells
+Up Ahead Is an Intersection
+
+
+
+
+
+Both Ways lead you to a well
+Activate them with F"
+label_settings = SubResource("LabelSettings_27r0d")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 8554.0
+offset_top = -162.0
+offset_right = 9082.0
+offset_bottom = 36.0
+scale = Vector2(0.335, 0.335)
+text = "To get into the Castle you wil
+need to activate the wells
+Up Ahead Is an Intersection
+
+
+
+
+
+Both Ways lead you to a well
+Activate them with F"
 label_settings = SubResource("LabelSettings_27r0d")
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]
