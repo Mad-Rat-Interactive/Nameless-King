@@ -8,6 +8,8 @@ var lock: Vector2
 func Enter():
 	enemy.velocity = Vector2.ZERO
 	lock = enemy.global_position
+	SoundManager.play_sound("Knight_hurt")
+	SoundManager.play_sound("Hurt")
 	$"../../AnimatedSprite2D".play("damage")
 
 func Physics_Update(_delta: float):
