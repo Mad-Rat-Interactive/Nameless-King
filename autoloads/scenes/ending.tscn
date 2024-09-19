@@ -30,5 +30,7 @@ offset_right = 1064.0
 offset_bottom = 370.0
 text = "Our Fault
 
-To Be Continued"
+To Be Continued
+
+Boss Fight(WIP)"
 label_settings = SubResource("LabelSettings_8pkn0")

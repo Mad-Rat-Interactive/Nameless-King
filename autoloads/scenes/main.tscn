@@ -103,7 +103,7 @@ position = Vector2(9478, 1331)
 shape = SubResource("CircleShape2D_2urec")
 
 [node name="ENecromancer" parent="." instance=ExtResource("7_oaqdv")]
-position = Vector2(582, 40)
+position = Vector2(624, -7)
 
 [node name="EKnights2" parent="." instance=ExtResource("6_4xr1q")]
 position = Vector2(8036, -26)
@@ -176,10 +176,10 @@ offset_bottom = 40.0
 text = "WASD Controls
 M1 for Swing
 Spacebar Lantern
-F to Activate Pillars
+F to Activate Wells
 
 
-Goal: Touch ALL Pillars"
+Goal: Touch ALL Wells"
 label_settings = SubResource("LabelSettings_27r0d")
 
 [connection signal="health_changed" from="Player" to="Player/Health Bar" method="_on_player_health_changed"]

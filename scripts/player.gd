@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var speed = 1.75
+@export var speed = 10
 
 # Animation variables
 var long_idle = false
@@ -80,6 +80,7 @@ func _physics_process(delta):
 	if realm_cooldown > 0:
 		realm_cooldown -= delta
 	if Input.is_action_pressed("lantern") and realm_cooldown <= 0:
+		SoundManager.play_sound("Flame")
 		if realm_active:
 			SoundManager.play_sound("Flame")
 			position.x -= 7169
